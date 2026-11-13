@@ -1,12 +1,13 @@
 gastos = []
 while True:
     try:
-        opcion = int(input("Que desea realizar?\n1. Agregar gasto \n2. Ver resumen de gastos \n3. Salir\n"))
+        opcion = int(input("Que desea realizar?\n1. Agregar gasto \n2. Ver resumen de gastos \n3. Eliminar gasto \n4. Salir\n"))
         if opcion == 1:
             try:
                 monto_gasto = float(input("Ingrese el monto del gasto: \n"))
+                razon_gasto = input("Ingrese la razon del gasto: \n")
                 if monto_gasto > 0:
-                    gastos.append(monto_gasto)
+                    gastos.append({"monto": monto_gasto, "razon": razon_gasto})
                 else:
                     print("Escriba un monto valido.")
             except ValueError:
@@ -18,12 +19,23 @@ while True:
                 print("No hay gastos registrados.")
             else:
                 for gasto in gastos:
-                    suma += gasto
-                    if gasto > gasto_mayor:
-                        gasto_mayor = gasto
+                    suma += gasto["monto"]
+                    if gasto["monto"] > gasto_mayor:
+                        gasto_mayor = gasto["monto"]
                 print(f"Suma de los gastos: {suma}")
                 print(f"Gasto mayor: {gasto_mayor}")
         elif opcion == 3:
+            indice = 0
+            if (len(gastos) == 0):
+                            print("No hay gastos registrados.")
+            else:
+                print("Gastos registrados: ")
+                for gasto in gastos:
+                    print(f"[{indice}] - ${gasto["monto"]} - {gasto["razon"]}")
+                    indice += 1
+                gasto_eliminado = int(input("Ingrese el indice del gasto a eliminar:\n"))
+                gastos.pop(gasto_eliminado)
+        elif opcion == 4:
             print("Saliendo...")
             break
         else:
