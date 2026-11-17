@@ -1,6 +1,6 @@
 gastos = []
 
-def agregar_gasto():
+def agregar_gasto(gastos):
     try:
         monto_gasto = float(input("Ingrese el monto del gasto: \n"))
         razon_gasto = input("Ingrese la razon del gasto: \n")
@@ -22,7 +22,8 @@ def resumen_gastos(gastos):
             suma += gasto["monto"]
             if gasto["monto"] > gasto_mayor:
                 gasto_mayor = gasto["monto"]
-        return f"Suma de los gastos: {suma}\nGasto mayor: {gasto_mayor}"
+        promedio = suma / len(gastos)
+        return f"Suma de los gastos: {suma:.2f}\nGasto mayor: {gasto_mayor:.2f}\nPromedio de los gastos: {promedio:.2f}"
 
 def eliminar_gastos(gastos):
     indice = 0
@@ -35,8 +36,11 @@ def eliminar_gastos(gastos):
             indice += 1
         try:
             gasto_eliminado = int(input("Ingrese el indice del gasto a eliminar:\n"))
-            gastos.pop(gasto_eliminado)
-            return "Eliminado."
+            if gasto_eliminado >= 0:
+                gastos.pop(gasto_eliminado)
+                return "Eliminado."
+            else:
+                return "Indice invalido."
         except ValueError:
             return "Escriba un indice real"
         except IndexError:
@@ -46,7 +50,7 @@ while True:
     try:
         opcion = int(input("Que desea realizar?\n1. Agregar gasto \n2. Ver resumen de gastos \n3. Eliminar gasto \n4. Salir\n"))
         if opcion == 1:
-            resultado1 = agregar_gasto()
+            resultado1 = agregar_gasto(gastos)
             print(resultado1)
         elif opcion == 2:
             resultado2 = resumen_gastos(gastos)
