@@ -1,4 +1,18 @@
-gastos = []
+import json
+
+def guardar_gastos(gastos):
+    with open("gastos.json", "w", encoding="utf-8") as gastosarchivo:
+        json.dump(gastos, gastosarchivo, indent=4, ensure_ascii=False)
+
+def cargar_gastos():
+    try:
+        with open("gastos.json", "r", encoding="utf-8") as gastosarchivo:
+            return json.load(gastosarchivo)
+    except FileNotFoundError:
+        gastos = []
+        return gastos
+
+gastos = cargar_gastos()
 
 def agregar_gasto(gastos):
     try:
@@ -52,12 +66,14 @@ while True:
         if opcion == 1:
             resultado1 = agregar_gasto(gastos)
             print(resultado1)
+            guardar_gastos(gastos)
         elif opcion == 2:
             resultado2 = resumen_gastos(gastos)
             print(resultado2)
         elif opcion == 3:
             resultado3 = eliminar_gastos(gastos)
             print(resultado3)
+            guardar_gastos(gastos)
         elif opcion == 4:
             print("Saliendo...")
             break
