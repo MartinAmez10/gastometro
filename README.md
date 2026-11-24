@@ -17,7 +17,7 @@ El programa puede ser ejecutado al hacer debug normalmente desde tu editor de c�
 Se guardan en una lista llamada "gastos", donde cada gasto es un diccionario dentro de la lista, la cual está ligada a un archivo JSON, llamado "gastos.json". Este archivo se crea automáticamente al agregar algún gasto mediante el programa por primera vez (o si no existe el archivo al momento de agregar un gasto). Este archivo no se encuentra en el repositorio, dado que ha sido excluido con .gitignore.
 
 ## ¿Qué conceptos se usaron?
-Se usaron los conceptos y funciones de Python referentes a ciclos, condicionales, listas, diccionarios, funciones y parámetros, manejo de errores y archivos JSON. 
+Se usaron los conceptos y funciones de Python referentes a ciclos, condicionales, listas, diccionarios, funciones y parámetros, ```enumerate```, ```sum```, ```max```, expresiones generadoras, manejo de errores y archivos JSON. 
 
 ## Historia del proyecto
 - **12 de noviembre:** Funcionalidad como una lista temporal, consultando también suma total y el gasto mayor.
@@ -25,3 +25,4 @@ Se usaron los conceptos y funciones de Python referentes a ciclos, condicionales
 - **16 de noviembre:** Separación del programa en funciones.
 - **17 de noviembre:** Ajuste en validaciones y agregado de la función de mostrar promedio en el resumen de gastos.
 - **19 de noviembre:** Incorporación del guardado y carga de la lista en un archivo JSON.
+- **23 de noviembre:** Incorporación de las funciones enumerate, sum y max en lugar de variables de índice, suma y gasto mayor.

@@ -1,5 +1,6 @@
 import json
 
+
 def guardar_gastos(gastos):
     with open("gastos.json", "w", encoding="utf-8") as gastosarchivo:
         json.dump(gastos, gastosarchivo, indent=4, ensure_ascii=False)
@@ -27,27 +28,21 @@ def agregar_gasto(gastos):
             return "Escriba un monto valido."
 
 def resumen_gastos(gastos):
-    suma = 0
-    gasto_mayor = 0
     if (len(gastos) == 0):
         return "No hay gastos registrados."
     else:
-        for gasto in gastos:
-            suma += gasto["monto"]
-            if gasto["monto"] > gasto_mayor:
-                gasto_mayor = gasto["monto"]
+        suma = sum(g["monto"] for g in gastos)
+        gasto_mayor = max(g["monto"] for g in gastos)
         promedio = suma / len(gastos)
         return f"Suma de los gastos: {suma:.2f}\nGasto mayor: {gasto_mayor:.2f}\nPromedio de los gastos: {promedio:.2f}"
 
 def eliminar_gastos(gastos):
-    indice = 0
     if (len(gastos) == 0):
         return "No hay gastos registrados."
     else:
         print("Gastos registrados: ")
-        for gasto in gastos:
+        for indice, gasto in enumerate(gastos):
             print(f"[{indice}] - ${gasto["monto"]} - {gasto["razon"]}")
-            indice += 1
         try:
             gasto_eliminado = int(input("Ingrese el indice del gasto a eliminar:\n"))
             if gasto_eliminado >= 0:
