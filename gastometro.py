@@ -12,6 +12,10 @@ def cargar_gastos():
     except FileNotFoundError:
         gastos = []
         return gastos
+    except json.JSONDecodeError:
+        print("Archivo dañado. Reconstruyendo archivo...")
+        gastos = []
+        return gastos
 
 gastos = cargar_gastos()
 

@@ -26,3 +26,4 @@ Se usaron los conceptos y funciones de Python referentes a ciclos, condicionales
 - **17 de noviembre:** Ajuste en validaciones y agregado de la función de mostrar promedio en el resumen de gastos.
 - **19 de noviembre:** Incorporación del guardado y carga de la lista en un archivo JSON.
 - **23 de noviembre:** Incorporación de las funciones enumerate, sum y max en lugar de variables de índice, suma y gasto mayor.
+- **24 de noviembre:** Manejo de error en archivo JSON dañado.
